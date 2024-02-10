@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "warehouse_interface", "ware
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{A6F315F9-B301-4E22-8503-DFEF4E20EA1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassBussines", "ClassBussines\ClassBussines.csproj", "{F7DD562E-8E90-48EC-96AA-C25911365E07}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{A6F315F9-B301-4E22-8503-DFEF4E20EA1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6F315F9-B301-4E22-8503-DFEF4E20EA1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6F315F9-B301-4E22-8503-DFEF4E20EA1E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F7DD562E-8E90-48EC-96AA-C25911365E07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F7DD562E-8E90-48EC-96AA-C25911365E07}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F7DD562E-8E90-48EC-96AA-C25911365E07}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F7DD562E-8E90-48EC-96AA-C25911365E07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
