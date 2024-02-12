@@ -37,7 +37,6 @@ namespace DataLayer.DataVoucher
 
             if (!IsDatabaseConnected())
             {
-                Console.WriteLine("NO TIENE ACCESO A LA BASE DE DATOS");
                 string error = "No tiene acceso a la base de datos";
                 return error;
             }
