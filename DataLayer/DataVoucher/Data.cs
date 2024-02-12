@@ -31,16 +31,15 @@ namespace DataLayer.DataVoucher
             }
         }
 
-        private Boolean checkConnetion = false;
-
-        public DataTable getTable(string[] ftdate)
+        public object getTable(string[] ftdate)
         {
             DataTable dataTable = new DataTable();
 
             if (!IsDatabaseConnected())
             {
                 Console.WriteLine("NO TIENE ACCESO A LA BASE DE DATOS");
-                return dataTable;
+                string error = "No tiene acceso a la base de datos";
+                return error;
             }
 
             string sqlQuery = "SELECT id_task, user AS USUARIO, inspect AS INSPECCIONADO, "
@@ -59,6 +58,5 @@ namespace DataLayer.DataVoucher
 
             return dataTable;
         }
-
     }
 }
