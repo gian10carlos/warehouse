@@ -21,7 +21,7 @@ namespace DataLayer.DataVoucher.Updated
             string procesureQuery = "operationTask_gc";
 
             using (MySqlCommand cmd = new MySqlCommand(procesureQuery, connection))
-            {
+            { 
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new MySqlParameter("@option_", MySqlDbType.Int32)).Value = option;
                 cmd.Parameters.Add(new MySqlParameter("@date_r_", MySqlDbType.VarString, 500)).Value = date_r;

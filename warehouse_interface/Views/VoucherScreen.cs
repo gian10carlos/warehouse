@@ -17,23 +17,72 @@ namespace warehouse_interface.Views
 
         BindingSource bindingSource = new BindingSource();
         private Boolean filterActive = false;
+        private string[] ftdate = new string[2];
+        private int selectFilterDate = 0;
 
         public VoucherScreen()
         {
             InitializeComponent();
+            filterActive = false;
+            bindingSource.RemoveFilter();
+            loadTable();
         }
 
         private void VoucherScreen_Load(object sender, EventArgs e)
         {
+
             componentComboBox.ComboBoxPayment(comboBoxPayment);
             componentComboBox.ComboBoxType(comboBoxType);
             componentComboBox.ComboBoxStatus(comboBoxStatus);
-            bindingSource =  ComponentTable.ComponentLoadTable(dGVTasks);
+
+            bindingSource = loadTable();
 
             if (dGVTasks.Columns.Count > 0 && dGVTasks.Rows.Count > 0)
             {
                 dGVTasks.Columns[0].Visible = false;
             }
+        }
+
+        private void dateTimeFrom_ValueChanged(object sender, EventArgs e)
+        {
+            
+            selectFilterDate = 1;
+            loadTable();
+        }
+
+        private void dateTimeTo_ValueChanged(object sender, EventArgs e)
+        {
+            
+            selectFilterDate = 1;
+            loadTable();
+        }
+
+        public void filterDateFromTo()
+        {
+
+            string fromDate = "";
+            string toDate = "";
+
+            if(selectFilterDate == 0)
+            {
+                DateTime dateTime = DateTime.Now;
+                fromDate = dateTime.ToString("yyyy-MM-dd");
+                toDate = dateTime.ToString("yyyy-MM-dd");
+            }
+            if (selectFilterDate == 1)
+            {
+                fromDate = dateTimeFrom.Value.ToString("yyyy-MM-dd");
+                toDate = dateTimeTo.Value.ToString("yyyy-MM-dd");
+            }
+
+            ftdate[0] = fromDate;
+            ftdate[1] = toDate;
+        }
+
+        private BindingSource loadTable()
+        {
+            filterDateFromTo();
+            return ComponentTable.ComponentLoadTable(dGVTasks, ftdate);
         }
 
         private object[] valClickRowView;
@@ -89,8 +138,8 @@ namespace warehouse_interface.Views
             {
                 switch (changeStatus.checkUser(textBoxUser.Text, textBoxInspect.Text, valClickRowView[7]))
                 {
-                    case 0: changeStatus.dialog(0, Convert.ToInt32(valClickRowView[0]), textBoxUser.Text, textBoxInspect.Text, dGVTasks); break;
-                    case 1: changeStatus.dialog(1, Convert.ToInt32(valClickRowView[0]), textBoxUser.Text, textBoxInspect.Text, dGVTasks); break;
+                    case 0: changeStatus.dialog(0, Convert.ToInt32(valClickRowView[0]), textBoxUser.Text, textBoxInspect.Text, dGVTasks, ftdate); break;
+                    case 1: changeStatus.dialog(1, Convert.ToInt32(valClickRowView[0]), textBoxUser.Text, textBoxInspect.Text, dGVTasks, ftdate); break;
                 }
             }
         }
@@ -99,30 +148,13 @@ namespace warehouse_interface.Views
         {
             if (changeStatus.checkUser(textBoxUser.Text, textBoxInspect.Text, valClickRowView[7]) == 1)
             {
-                changeStatus.dialog(2, Convert.ToInt32(valClickRowView[0]), textBoxUser.Text, textBoxInspect.Text, dGVTasks);//INSPECT VALIDATED WAITING - PROCESS
+                changeStatus.dialog(2, Convert.ToInt32(valClickRowView[0]), textBoxUser.Text, textBoxInspect.Text, dGVTasks, ftdate);//INSPECT VALIDATED WAITING - PROCESS
             }
         }
 
         private void textBoxReceipt_TextChanged(object sender, EventArgs e)
         {
             if (!filterActive) bindingSource.Filter = $"SERIE_NUM LIKE '{textBoxReceipt.Text}%'";
-        }
-
-        private void dateRegister_ValueChanged(object sender, EventArgs e)
-        {
-            if (!filterActive)
-            {
-                DateTime selectedTime = dateRegister.Value.Date;
-
-                string formatteDate = selectedTime.ToString("dd/MM/yyyy");
-
-                if (formatteDate.Length > 0 && formatteDate[0] == '0')
-                {
-                    formatteDate = formatteDate.Substring(1);
-                }
-                bindingSource.Filter = $"CONVERT(CONVERT(FECHA, 'System.DateTime'), 'System.String') LIKE '{formatteDate}%'";
-            }
-            else bindingSource.RemoveFilter();
         }
     }
 }

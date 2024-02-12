@@ -16,9 +16,9 @@ namespace warehouse_interface.Components
         private DataTable dataTable;
         private BindingSource bindingSource = new BindingSource();
 
-        public BindingSource ComponentLoadTable(DataGridView dGVTasks)
+        public BindingSource ComponentLoadTable(DataGridView dGVTasks, string[] ftdate)
         {
-            dataTable = data.getTable();
+            dataTable = data.getTable(ftdate);
             bindingSource.DataSource = dataTable;
             dGVTasks.ReadOnly = true;
             dGVTasks.AllowUserToAddRows = false;

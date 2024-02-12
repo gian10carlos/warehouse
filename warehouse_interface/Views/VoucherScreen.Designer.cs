@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelForm = new System.Windows.Forms.Panel();
+            this.dateTimeTo = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
-            this.dateRegister = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeFrom = new System.Windows.Forms.DateTimePicker();
             this.textBoxInspect = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBoxPayment = new System.Windows.Forms.ComboBox();
@@ -61,8 +62,9 @@
             this.panelForm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelForm.BackColor = System.Drawing.Color.Transparent;
+            this.panelForm.Controls.Add(this.dateTimeTo);
             this.panelForm.Controls.Add(this.label8);
-            this.panelForm.Controls.Add(this.dateRegister);
+            this.panelForm.Controls.Add(this.dateTimeFrom);
             this.panelForm.Controls.Add(this.textBoxInspect);
             this.panelForm.Controls.Add(this.label7);
             this.panelForm.Controls.Add(this.comboBoxPayment);
@@ -80,8 +82,20 @@
             this.panelForm.Controls.Add(this.comboBoxType);
             this.panelForm.Location = new System.Drawing.Point(3, 29);
             this.panelForm.Name = "panelForm";
-            this.panelForm.Size = new System.Drawing.Size(1310, 217);
+            this.panelForm.Size = new System.Drawing.Size(1286, 217);
             this.panelForm.TabIndex = 18;
+            // 
+            // dateTimeTo
+            // 
+            this.dateTimeTo.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimeTo.CustomFormat = "dd-MM-yyyy";
+            this.dateTimeTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimeTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimeTo.Location = new System.Drawing.Point(508, 167);
+            this.dateTimeTo.Name = "dateTimeTo";
+            this.dateTimeTo.Size = new System.Drawing.Size(177, 28);
+            this.dateTimeTo.TabIndex = 21;
+            this.dateTimeTo.ValueChanged += new System.EventHandler(this.dateTimeTo_ValueChanged);
             // 
             // label8
             // 
@@ -93,17 +107,17 @@
             this.label8.TabIndex = 20;
             this.label8.Text = "Fecha Registro:";
             // 
-            // dateRegister
+            // dateTimeFrom
             // 
-            this.dateRegister.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateRegister.CustomFormat = "dd-MM-yyyy";
-            this.dateRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateRegister.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateRegister.Location = new System.Drawing.Point(239, 167);
-            this.dateRegister.Name = "dateRegister";
-            this.dateRegister.Size = new System.Drawing.Size(177, 28);
-            this.dateRegister.TabIndex = 19;
-            this.dateRegister.ValueChanged += new System.EventHandler(this.dateRegister_ValueChanged);
+            this.dateTimeFrom.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimeFrom.CustomFormat = "dd-MM-yyyy";
+            this.dateTimeFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimeFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimeFrom.Location = new System.Drawing.Point(261, 167);
+            this.dateTimeFrom.Name = "dateTimeFrom";
+            this.dateTimeFrom.Size = new System.Drawing.Size(177, 28);
+            this.dateTimeFrom.TabIndex = 19;
+            this.dateTimeFrom.ValueChanged += new System.EventHandler(this.dateTimeFrom_ValueChanged);
             // 
             // textBoxInspect
             // 
@@ -130,7 +144,7 @@
             this.comboBoxPayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxPayment.FormattingEnabled = true;
-            this.comboBoxPayment.Location = new System.Drawing.Point(1088, 14);
+            this.comboBoxPayment.Location = new System.Drawing.Point(1064, 14);
             this.comboBoxPayment.Name = "comboBoxPayment";
             this.comboBoxPayment.Size = new System.Drawing.Size(149, 33);
             this.comboBoxPayment.TabIndex = 16;
@@ -141,7 +155,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(979, 14);
+            this.label6.Location = new System.Drawing.Point(955, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(71, 28);
             this.label6.TabIndex = 15;
@@ -153,7 +167,7 @@
             this.buttonClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonClear.Location = new System.Drawing.Point(1150, 100);
+            this.buttonClear.Location = new System.Drawing.Point(1132, 131);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Padding = new System.Windows.Forms.Padding(10);
             this.buttonClear.Size = new System.Drawing.Size(119, 55);
@@ -187,7 +201,7 @@
             this.comboBoxStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxStatus.FormattingEnabled = true;
-            this.comboBoxStatus.Location = new System.Drawing.Point(698, 9);
+            this.comboBoxStatus.Location = new System.Drawing.Point(674, 9);
             this.comboBoxStatus.Name = "comboBoxStatus";
             this.comboBoxStatus.Size = new System.Drawing.Size(196, 33);
             this.comboBoxStatus.TabIndex = 10;
@@ -198,7 +212,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(575, 12);
+            this.label4.Location = new System.Drawing.Point(551, 12);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 28);
             this.label4.TabIndex = 9;
@@ -209,7 +223,7 @@
             this.textBoxReceipt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxReceipt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBoxReceipt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxReceipt.Location = new System.Drawing.Point(625, 111);
+            this.textBoxReceipt.Location = new System.Drawing.Point(689, 116);
             this.textBoxReceipt.Name = "textBoxReceipt";
             this.textBoxReceipt.Size = new System.Drawing.Size(313, 30);
             this.textBoxReceipt.TabIndex = 8;
@@ -220,7 +234,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(488, 113);
+            this.label3.Location = new System.Drawing.Point(536, 116);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 28);
             this.label3.TabIndex = 7;
@@ -281,40 +295,40 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dGVTasks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGVTasks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGVTasks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dGVTasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGVTasks.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGVTasks.DefaultCellStyle = dataGridViewCellStyle5;
             this.dGVTasks.Location = new System.Drawing.Point(20, 262);
             this.dGVTasks.Name = "dGVTasks";
             this.dGVTasks.ReadOnly = true;
             this.dGVTasks.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGVTasks.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGVTasks.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dGVTasks.RowHeadersVisible = false;
             this.dGVTasks.RowHeadersWidth = 51;
             this.dGVTasks.RowTemplate.Height = 24;
             this.dGVTasks.ShowCellErrors = false;
-            this.dGVTasks.Size = new System.Drawing.Size(1220, 310);
+            this.dGVTasks.Size = new System.Drawing.Size(1222, 310);
             this.dGVTasks.TabIndex = 19;
             this.dGVTasks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGVTasks_CellContentClick);
             // 
@@ -339,7 +353,7 @@
             this.Controls.Add(this.dGVTasks);
             this.Controls.Add(this.panelForm);
             this.Name = "VoucherScreen";
-            this.Size = new System.Drawing.Size(1287, 636);
+            this.Size = new System.Drawing.Size(1289, 636);
             this.Load += new System.EventHandler(this.VoucherScreen_Load);
             this.panelForm.ResumeLayout(false);
             this.panelForm.PerformLayout();
@@ -369,7 +383,8 @@
         private MySql.Data.MySqlClient.MySqlCommand mySqlCommand1;
         private System.Windows.Forms.DataGridView dGVTasks;
         private System.Windows.Forms.Label labelInfoScan;
-        private System.Windows.Forms.DateTimePicker dateRegister;
+        private System.Windows.Forms.DateTimePicker dateTimeFrom;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DateTimePicker dateTimeTo;
     }
 }

@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataLayer;
+using DataLayer.DataVoucher;
 using MySql.Data.MySqlClient;
 using warehouse_interface.Components;
 using warehouse_interface.Views;
@@ -25,9 +26,6 @@ namespace warehouse_interface
         //VIEW
         private readonly SettingScreen settingScreen = new SettingScreen();
         private readonly VoucherScreen voucherScreen = new VoucherScreen();
-
-        //TABLE
-        private DataTable dataTable;
 
        public ContentUser()
         {

@@ -41,38 +41,40 @@ namespace warehouse_interface.Components.Voucher
 
         public int checkUser(string user, string inspect , object status)
         {
-            if (status.Equals("SIN INICIAR") && user.EndsWith(" - ALTIPLANO"))
+            if (status.Equals("SIN INICIAR") && user.EndsWith("20A"))
             {
                 return 0;
             }
-            if(status.Equals("PROCESO") && user.EndsWith(" - ALTIPLANO") && inspect.EndsWith(" - ALTIPLANO"))
+            if(status.Equals("PROCESO") && user.EndsWith("20A") && inspect.EndsWith("20A"))
             {
                 return 1;
             }
-            if (status.Equals("FINALIZADO") && user.EndsWith(" - ALTIPLANO") && inspect.EndsWith(" - ALTIPLANO"))
+            if (status.Equals("FINALIZADO") && user.EndsWith("20A") && inspect.EndsWith("20A"))
             {
                 return 2;
             }
             else return 3;
         }
 
-        public void dialog(int n, int id_t,string user, string inspect, DataGridView dGVTasks) 
+        public void dialog(int n, int id_t,string user, string inspect, DataGridView dGVTasks, string[] ftdate) 
         {
             if (n == 0)
             {
-                if (MessageBox.Show("¿Desea iniciar con esta tarea?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                DialogResult answer = MessageBox.Show("¿Desea iniciar con esta tarea?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (answer == DialogResult.Yes)
                 {
-                    updatedClass.waiting(1 ,"2024-01-22", default,id_t, user, default);
-                    componentTable.ComponentLoadTable(dGVTasks);
+                    updatedClass.waiting(1 ,default, default,id_t, user, default);
+                    componentTable.ComponentLoadTable(dGVTasks, ftdate);
                 }
             }
             if(n == 2)
             {
-                if(MessageBox.Show("¿Desea marcar esta tarea como finalizado?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                {
-                    updatedClass.waiting(2, "2024-01-22", default, id_t, default, inspect);
-                    componentTable.ComponentLoadTable(dGVTasks);
-                }
+                DialogResult answer = MessageBox.Show("¿Desea marcar esta tarea como finalizado?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (answer == DialogResult.Yes)
+                    {
+                        updatedClass.waiting(2, default, default, id_t, default, inspect);
+                        componentTable.ComponentLoadTable(dGVTasks, ftdate);
+                    }
             }
             if(n == 3)
             {
