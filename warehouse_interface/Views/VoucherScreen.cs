@@ -10,7 +10,6 @@ namespace warehouse_interface.Views
     {
         private DataTable dataTable = new DataTable();
         private ComponentComboBox componentComboBox = new ComponentComboBox();
-        private ComponentTextBox componentTextBox = new ComponentTextBox();
         private ComponentTable ComponentTable = new ComponentTable();
         private ChangeStatus changeStatus = new ChangeStatus();
         private General general = new General();
@@ -24,17 +23,18 @@ namespace warehouse_interface.Views
         {
             InitializeComponent();
             filterActive = false;
-            bindingSource.RemoveFilter();
-            loadTable();
-        }
-
-        private void VoucherScreen_Load(object sender, EventArgs e)
-        {
 
             componentComboBox.ComboBoxPayment(comboBoxPayment);
             componentComboBox.ComboBoxType(comboBoxType);
             componentComboBox.ComboBoxStatus(comboBoxStatus);
 
+            bindingSource = loadTable();
+
+            dGVTasks.Columns[0].Visible = false;
+        }
+
+        private void VoucherScreen_Load(object sender, EventArgs e)
+        {
             bindingSource = loadTable();
 
             if (dGVTasks.Columns.Count > 0 && dGVTasks.Rows.Count > 0)
@@ -45,21 +45,18 @@ namespace warehouse_interface.Views
 
         private void dateTimeFrom_ValueChanged(object sender, EventArgs e)
         {
-            
             selectFilterDate = 1;
             loadTable();
         }
 
         private void dateTimeTo_ValueChanged(object sender, EventArgs e)
         {
-            
             selectFilterDate = 1;
             loadTable();
         }
 
         public void filterDateFromTo()
         {
-
             string fromDate = "";
             string toDate = "";
 

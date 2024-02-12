@@ -133,8 +133,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Voucher\ChangeStatus.cs" />
+    <Compile Include="Components\Voucher\Error\MessageError.cs" />
     <Compile Include="Components\Voucher\General.cs" />
-    <Compile Include="Components\Voucher\ComponentTextBox.cs" />
     <Compile Include="Components\Voucher\ComponentTable.cs" />
     <Compile Include="Components\Voucher\ComponentComboBox.cs" />
     <Compile Include="ContentUser.cs">
@@ -207,5 +207,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

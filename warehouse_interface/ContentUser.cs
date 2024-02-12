@@ -18,11 +18,6 @@ namespace warehouse_interface
 {
     public partial class ContentUser : Form
     {
-        //COMPONENTS
-        private readonly ComponentTable componentTable = new ComponentTable();
-        private readonly ComponentComboBox componentComboBox = new ComponentComboBox();
-        private readonly ComponentTextBox componentTextBox = new ComponentTextBox();
-
         //VIEW
         private readonly SettingScreen settingScreen = new SettingScreen();
         private readonly VoucherScreen voucherScreen = new VoucherScreen();

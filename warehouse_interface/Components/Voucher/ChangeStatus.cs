@@ -32,10 +32,7 @@ namespace warehouse_interface.Components.Voucher
 
         public void finish(Label txtInfoScan, TextBox user, TextBox client, TextBox inspect, TextBox receipt, ComboBox payment, ComboBox status, ComboBox type, int val) 
         {
-            general
-                
-                
-                .DisabledEnabled(user, client, inspect, receipt, payment, status, type, val);
+            general.DisabledEnabled(user, client, inspect, receipt, payment, status, type, val);
             txtInfoScan.Text = "";
         }
 
@@ -60,6 +57,7 @@ namespace warehouse_interface.Components.Voucher
         {
             if (n == 0)
             {
+                DialogResult an = MessageBox.Show("¿Desea iniciar con esta tarea?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 DialogResult answer = MessageBox.Show("¿Desea iniciar con esta tarea?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (answer == DialogResult.Yes)
                 {
@@ -69,6 +67,7 @@ namespace warehouse_interface.Components.Voucher
             }
             if(n == 2)
             {
+                DialogResult an = MessageBox.Show("¿Desea marcar esta tarea como finalizado?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 DialogResult answer = MessageBox.Show("¿Desea marcar esta tarea como finalizado?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (answer == DialogResult.Yes)
                     {
