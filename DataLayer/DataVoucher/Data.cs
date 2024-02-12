@@ -1,12 +1,9 @@
-﻿
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
+using Mysqlx.Cursor;
+using MySqlX.XDevAPI;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataLayer.DataVoucher
 {
@@ -14,21 +11,54 @@ namespace DataLayer.DataVoucher
     {
         MySqlConnection connection = new MySqlConnection("SERVER=localhost; DATABASE=bdaltiplano; UID=root;PASSWORD= ;");
 
-        public DataTable getTable()
+        public bool IsDatabaseConnected()
+        {
+            try
+            {
+                connection.Open();
+                return true;
+            }
+            catch (MySqlException)
+            {
+                return false;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        private Boolean checkConnetion = false;
+
+        public DataTable getTable(string[] ftdate)
         {
             DataTable dataTable = new DataTable();
 
-            string sqlQuery = "SELECT id_task,user AS USUARIO, inspect AS INSPECCIONADO, client AS CLIENTE, date_voucher AS FECHA, serie_num AS SERIE_NUM, type AS TIPO, status AS ESTADO " +
-                              "FROM tasks_gc " +
-                              "WHERE status = 'SIN INICIAR' OR status = 'PROCESO' " +
-                              "ORDER BY CASE WHEN status = 'SIN INICIAR' THEN 0 WHEN status = 'PROCESO' THEN 1 ELSE 2 END";
+            if (!IsDatabaseConnected())
+            {
+                Console.WriteLine("NO TIENE ACCESO A LA BASE DE DATOS");
+                return dataTable;
+            }
+
+            string sqlQuery = "SELECT id_task, user AS USUARIO, inspect AS INSPECCIONADO, "
+                             + "client AS CLIENTE, date_voucher AS FECHA, serie_num AS SERIE_NUM, "
+                             + "type AS TIPO, status AS ESTADO "
+                             + "FROM tasks_gc "
+                             + "WHERE DATE(date_voucher) >= @from_dv_ AND DATE(date_voucher) <= @to_dv_ "
+                             + "ORDER BY CASE WHEN status = 'SIN INICIAR' THEN 0 WHEN status = 'PROCESO' THEN 1 ELSE 2 END";
 
             using (MySqlDataAdapter adapter = new MySqlDataAdapter(sqlQuery, connection))
             {
+                adapter.SelectCommand.Parameters.AddWithValue("@from_dv_", ftdate[0]);
+                adapter.SelectCommand.Parameters.AddWithValue("@to_dv_", ftdate[1]);
                 adapter.Fill(dataTable);
             }
 
             return dataTable;
         }
+
     }
 }

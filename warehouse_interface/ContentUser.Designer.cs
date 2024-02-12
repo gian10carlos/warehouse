@@ -103,6 +103,7 @@
             this.ClientSize = new System.Drawing.Size(1373, 695);
             this.Controls.Add(this.panelContainer);
             this.Controls.Add(this.panel2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ContentUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Almacenes Altiplano";
