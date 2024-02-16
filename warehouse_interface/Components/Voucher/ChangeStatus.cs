@@ -57,23 +57,23 @@ namespace warehouse_interface.Components.Voucher
         {
             if (n == 0)
             {
-                DialogResult an = MessageBox.Show("¿Desea iniciar con esta tarea?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                DialogResult answer = MessageBox.Show("¿Desea iniciar con esta tarea?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                //DialogResult an = MessageBox.Show("¿Desea iniciar con esta tarea?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                /*DialogResult answer = MessageBox.Show("¿Desea iniciar con esta tarea?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (answer == DialogResult.Yes)
-                {
+                {*/
                     updatedClass.waiting(1 ,default, default,id_t, user, default);
                     componentTable.ComponentLoadTable(dGVTasks, ftdate);
-                }
+                //}
             }
             if(n == 2)
             {
-                DialogResult an = MessageBox.Show("¿Desea marcar esta tarea como finalizado?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                DialogResult answer = MessageBox.Show("¿Desea marcar esta tarea como finalizado?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                //DialogResult an = MessageBox.Show("¿Desea marcar esta tarea como finalizado?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                /*DialogResult answer = MessageBox.Show("¿Desea marcar esta tarea como finalizado?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (answer == DialogResult.Yes)
-                    {
+                    {*/
                         updatedClass.waiting(2, default, default, id_t, default, inspect);
                         componentTable.ComponentLoadTable(dGVTasks, ftdate);
-                    }
+                    //}
             }
             if(n == 3)
             {

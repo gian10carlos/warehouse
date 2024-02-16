@@ -15,8 +15,6 @@ namespace warehouse_interface
         [STAThread]
         static void Main()
         {
-            Console.WriteLine("BIENVENIDO");
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new ContentUser());

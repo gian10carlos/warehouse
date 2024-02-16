@@ -93,6 +93,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataLogin\LoginClass.cs" />
+    <Compile Include="DataManager\Data.cs" />
+    <Compile Include="DataManager\StatusTable.cs" />
+    <Compile Include="DataManager\TableClass.cs" />
     <Compile Include="DataVoucher\Data.cs" />
     <Compile Include="DataVoucher\Updated\UpdatedClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,5 +105,6 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

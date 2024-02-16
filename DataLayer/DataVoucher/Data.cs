@@ -9,7 +9,7 @@ namespace DataLayer.DataVoucher
 {
     public class Data
     {
-        MySqlConnection connection = new MySqlConnection("SERVER=localhost; DATABASE=bdaltiplano; UID=root;PASSWORD= ;");
+        MySqlConnection connection = new MySqlConnection("SERVER=localhost; DATABASE=warehouse; UID=root;PASSWORD= ;");
 
         public bool IsDatabaseConnected()
         {
@@ -54,7 +54,7 @@ namespace DataLayer.DataVoucher
                 adapter.SelectCommand.Parameters.AddWithValue("@to_dv_", ftdate[1]);
                 adapter.Fill(dataTable);
             }
-
+            connection.Close();
             return dataTable;
         }
     }
