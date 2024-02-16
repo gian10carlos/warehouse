@@ -19,14 +19,16 @@ namespace warehouse_interface
     public partial class ContentUser : Form
     {
         //VIEW
-        private readonly SettingScreen settingScreen = new SettingScreen();
         private readonly VoucherScreen voucherScreen = new VoucherScreen();
 
        public ContentUser()
         {
             InitializeComponent();
-            userControl(voucherScreen);
 
+            userControl(voucherScreen);
+            this.KeyPreview = true;
+
+            this.KeyDown += ContentUser_KeyDown;
         }
 
         private void userControl(UserControl userControl)
@@ -46,7 +48,6 @@ namespace warehouse_interface
 
         private void buttonSetting_Click(object sender, EventArgs e)
         {
-            userControl(settingScreen);
             Color color = Color.FromArgb(224, 224, 224);
             buttonReceipt.BackColor = color;
             buttonSetting.BackColor =   Color.Lavender;
@@ -55,6 +56,29 @@ namespace warehouse_interface
         private void ContentUser_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void ContentUser_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.B)
+            {
+                OpenMyForm();
+            }
+        }
+
+        FormLogin formLogin;
+        private void OpenMyForm()
+        {
+            if (formLogin == null || formLogin.IsDisposed)
+            {
+                formLogin = new FormLogin();
+                formLogin.FormClosed += (s, args) => formLogin = null;
+                formLogin.Show();
+            }
+            else
+            {
+                formLogin.BringToFront();
+            }
         }
     }
 }

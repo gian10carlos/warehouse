@@ -11,14 +11,15 @@ namespace DataLayer.DataVoucher.Updated
     public class UpdatedClass
     {
 
-        MySqlConnection connection = new MySqlConnection("SERVER=localhost; DATABASE=bdaltiplano; UID=root;PASSWORD= ;");
+        MySqlConnection connection = new MySqlConnection("SERVER=localhost; DATABASE=warehouse; UID=root;PASSWORD= ;");
         
         public DataTable waiting(int option,string date_r, int val_min, int id, string user, string inspect)
         {
+            connection.Open();
             DataTable dataTable = new DataTable();
 
             
-            string procesureQuery = "operationTask_gc";
+            string procesureQuery = "operationTask_gc1";
 
             using (MySqlCommand cmd = new MySqlCommand(procesureQuery, connection))
             { 
@@ -35,7 +36,7 @@ namespace DataLayer.DataVoucher.Updated
                     adapter.Fill(dataTable);
                 }
             }
-
+            connection.Close();
             return dataTable;
         }
     }

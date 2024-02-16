@@ -57,13 +57,13 @@
             this.buttonSetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSetting.ForeColor = System.Drawing.Color.White;
             this.buttonSetting.Image = ((System.Drawing.Image)(resources.GetObject("buttonSetting.Image")));
-            this.buttonSetting.Location = new System.Drawing.Point(1289, 0);
+            this.buttonSetting.Location = new System.Drawing.Point(1257, 0);
             this.buttonSetting.Name = "buttonSetting";
-            this.buttonSetting.Size = new System.Drawing.Size(74, 55);
+            this.buttonSetting.Size = new System.Drawing.Size(106, 55);
             this.buttonSetting.TabIndex = 1;
             this.buttonSetting.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonSetting.UseVisualStyleBackColor = false;
-            this.buttonSetting.Click += new System.EventHandler(this.buttonSetting_Click);
+            this.buttonSetting.Visible = false;
             // 
             // buttonReceipt
             // 
@@ -83,7 +83,6 @@
             this.buttonReceipt.Text = "Comprobantes";
             this.buttonReceipt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonReceipt.UseVisualStyleBackColor = false;
-            this.buttonReceipt.Click += new System.EventHandler(this.buttonReceipt_Click);
             // 
             // panelContainer
             // 
@@ -107,7 +106,9 @@
             this.Name = "ContentUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Almacenes Altiplano";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ContentUser_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ContentUser_KeyDown);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
