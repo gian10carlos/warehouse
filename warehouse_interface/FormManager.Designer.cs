@@ -30,8 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormManager));
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxSN = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGVSeller = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
@@ -64,7 +63,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.dataGVReportMonth = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGVSeller)).BeginInit();
@@ -81,8 +80,7 @@
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panel3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel3.Controls.Add(this.textBox2);
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.textBoxSN);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.dataGVSeller);
             this.panel3.Controls.Add(this.label3);
@@ -90,34 +88,27 @@
             this.panel3.Controls.Add(this.buttonSave);
             this.panel3.Controls.Add(this.textBoxMinAmount);
             this.panel3.Controls.Add(this.label5);
-            this.panel3.Location = new System.Drawing.Point(14, 498);
+            this.panel3.Location = new System.Drawing.Point(14, 497);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(947, 418);
+            this.panel3.Size = new System.Drawing.Size(975, 476);
             this.panel3.TabIndex = 23;
             // 
-            // textBox2
+            // textBoxSN
             // 
-            this.textBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(734, 330);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(167, 30);
-            this.textBox2.TabIndex = 30;
-            // 
-            // textBox1
-            // 
-            this.textBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(238, 373);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(167, 30);
-            this.textBox1.TabIndex = 29;
+            this.textBoxSN.BackColor = System.Drawing.Color.LightCyan;
+            this.textBoxSN.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.textBoxSN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxSN.Location = new System.Drawing.Point(562, 100);
+            this.textBoxSN.Name = "textBoxSN";
+            this.textBoxSN.Size = new System.Drawing.Size(162, 27);
+            this.textBoxSN.TabIndex = 32;
+            this.textBoxSN.TextChanged += new System.EventHandler(this.textBoxSN_TextChanged_1);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(622, 56);
+            this.label4.Location = new System.Drawing.Point(622, 30);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(181, 24);
             this.label4.TabIndex = 28;
@@ -128,11 +119,11 @@
             this.dataGVSeller.AllowUserToAddRows = false;
             this.dataGVSeller.AllowUserToOrderColumns = true;
             this.dataGVSeller.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGVSeller.Location = new System.Drawing.Point(480, 92);
+            this.dataGVSeller.Location = new System.Drawing.Point(480, 70);
             this.dataGVSeller.Name = "dataGVSeller";
             this.dataGVSeller.RowHeadersWidth = 51;
             this.dataGVSeller.RowTemplate.Height = 24;
-            this.dataGVSeller.Size = new System.Drawing.Size(441, 232);
+            this.dataGVSeller.Size = new System.Drawing.Size(467, 335);
             this.dataGVSeller.TabIndex = 27;
             this.dataGVSeller.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGVSeller_CellMouseClick);
             // 
@@ -140,7 +131,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(145, 116);
+            this.label3.Location = new System.Drawing.Point(147, 100);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(127, 24);
             this.label3.TabIndex = 26;
@@ -151,11 +142,11 @@
             this.dataGVPayment.AllowUserToAddRows = false;
             this.dataGVPayment.AllowUserToOrderColumns = true;
             this.dataGVPayment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGVPayment.Location = new System.Drawing.Point(30, 159);
+            this.dataGVPayment.Location = new System.Drawing.Point(30, 147);
             this.dataGVPayment.Name = "dataGVPayment";
             this.dataGVPayment.RowHeadersWidth = 51;
             this.dataGVPayment.RowTemplate.Height = 24;
-            this.dataGVPayment.Size = new System.Drawing.Size(375, 206);
+            this.dataGVPayment.Size = new System.Drawing.Size(375, 258);
             this.dataGVPayment.TabIndex = 25;
             this.dataGVPayment.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGVPayment_CellMouseClick);
             // 
@@ -165,7 +156,7 @@
             this.buttonSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSave.Location = new System.Drawing.Point(802, 366);
+            this.buttonSave.Location = new System.Drawing.Point(839, 424);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Padding = new System.Windows.Forms.Padding(3);
             this.buttonSave.Size = new System.Drawing.Size(119, 37);
@@ -203,7 +194,7 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(14, 33);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(947, 442);
+            this.panel2.Size = new System.Drawing.Size(975, 442);
             this.panel2.TabIndex = 22;
             // 
             // label6
@@ -461,7 +452,7 @@
             this.dataGVReportMonth.ReadOnly = true;
             this.dataGVReportMonth.RowHeadersWidth = 51;
             this.dataGVReportMonth.RowTemplate.Height = 24;
-            this.dataGVReportMonth.Size = new System.Drawing.Size(709, 779);
+            this.dataGVReportMonth.Size = new System.Drawing.Size(709, 836);
             this.dataGVReportMonth.TabIndex = 36;
             // 
             // panel4
@@ -469,22 +460,22 @@
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel4.Controls.Add(this.textBox3);
+            this.panel4.Controls.Add(this.textBox1);
             this.panel4.Controls.Add(this.dataGVReportMonth);
             this.panel4.Controls.Add(this.label12);
             this.panel4.Location = new System.Drawing.Point(1011, 33);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(755, 883);
+            this.panel4.Size = new System.Drawing.Size(755, 940);
             this.panel4.TabIndex = 38;
             // 
-            // textBox3
+            // textBox1
             // 
-            this.textBox3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(262, 43);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(167, 30);
-            this.textBox3.TabIndex = 30;
+            this.textBox1.BackColor = System.Drawing.Color.LightCyan;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(245, 106);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(167, 27);
+            this.textBox1.TabIndex = 34;
             // 
             // panel1
             // 
@@ -494,7 +485,7 @@
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(-1, -4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1781, 928);
+            this.panel1.Size = new System.Drawing.Size(1781, 985);
             this.panel1.TabIndex = 18;
             // 
             // FormManager
@@ -503,10 +494,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(1792, 762);
+            this.ClientSize = new System.Drawing.Size(1825, 700);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormManager";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Almacenes Altiplano";
             this.Load += new System.EventHandler(this.FormManager_Load);
             this.panel3.ResumeLayout(false);
@@ -562,8 +554,7 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxSN;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox3;
     }
 }

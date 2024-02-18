@@ -19,12 +19,13 @@ namespace warehouse_interface
         private ComponentTable componentTable = new ComponentTable();
         private OperationManager operationManager = new OperationManager();
         private StatusTable statusTable = new StatusTable();
+        private BindingSource bindingSourceS = new BindingSource();
 
         public FormManager()
         {
             InitializeComponent();
             this.MaximizeBox = false;
-            this.Size = new System.Drawing.Size(1360, 800);
+            this.Size = new System.Drawing.Size(1370, 700);
             dataGVReportMonth.AllowUserToResizeRows = false;
             dataGVReportMonth.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -44,6 +45,7 @@ namespace warehouse_interface
 
         public void loadTable()
         {
+            textBoxMinAmount.Text = componentTable.ComponentLoadValMin().ToString();
             componentTable.componentLoadTableUser(dataGVReportMonth);
             componentTable.componentLoadTableSeller(dataGVSeller);
             componentTable.ComponentLoadTablePayment(dataGVPayment);
@@ -118,6 +120,12 @@ namespace warehouse_interface
                 statusTable.updatedStatusP(valClickRowViewP);
                 loadTable();
             }
+        }
+
+        private void textBoxSN_TextChanged_1(object sender, EventArgs e)
+        {
+            bindingSourceS.EndEdit();
+            bindingSourceS.Filter = $"NOMBRE_VEND LIKE '{textBoxSN.Text}%'";
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using DataLayer.Reposit;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,12 @@ namespace DataLayer.DataManager
 {
     public class StatusTable
     {
-        MySqlConnection connection = new MySqlConnection("SERVER=localhost; DATABASE=warehouse; UID=root;PASSWORD= ;");
+        private readonly DataBase dataBase = new DataBase();
 
         public void updatedStatusS(object[] valClickRowView)
         {
+            MySqlConnection connection = dataBase.dbconnection();
+
             int newstatus = 0;
 
             if (valClickRowView[2].Equals("ACTIVO"))
@@ -24,14 +27,12 @@ namespace DataLayer.DataManager
                 newstatus = 1;
             }
 
-            Console.WriteLine("" + newstatus);
-
             connection.Open();
-            string sqlQuery = "UPDATE statusSeller_gc SET status = @newstatus WHERE id = @n_";
+            string sqlQuery = "UPDATE seller_status_wh SET status = @newstatus WHERE id = @n_";
 
             using (MySqlCommand cmd = new MySqlCommand(sqlQuery, connection))
             {
-                Console.WriteLine("UPDATE statusSeller_gc SET status = " + newstatus + " WHERE id = " + valClickRowView[0]);
+                Console.WriteLine("UPDATE seller_status_wh SET status = " + newstatus + " WHERE id = " + valClickRowView[0]);
                 cmd.Parameters.AddWithValue("@newstatus", newstatus);
                 cmd.Parameters.AddWithValue("@n_", valClickRowView[0]);
 
@@ -43,6 +44,8 @@ namespace DataLayer.DataManager
 
         public void updatedStatusP(object[] valClickRowView)
         {
+            MySqlConnection connection = dataBase.dbconnection();
+
             int newstatus = 0;
 
             if (valClickRowView[2].Equals("ACTIVO"))
@@ -54,11 +57,10 @@ namespace DataLayer.DataManager
             }
 
             connection.Open();
-            string sqlQuery = "UPDATE payment_gc SET status = @newstatus WHERE id_payment = @n_";
+            string sqlQuery = "UPDATE payment_status_wh SET status = @newstatus WHERE id = @n_";
 
             using (MySqlCommand cmd = new MySqlCommand(sqlQuery, connection))
             {
-                Console.WriteLine("UPDATE payment_gc SET status = " + newstatus + " WHERE id = " + valClickRowView[0]);
                 cmd.Parameters.AddWithValue("@newstatus", newstatus);
                 cmd.Parameters.AddWithValue("@n_", valClickRowView[0]);
 

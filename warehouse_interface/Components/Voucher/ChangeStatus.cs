@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using warehouse_interface.Views;
 
 namespace warehouse_interface.Components.Voucher
 {
@@ -27,7 +28,7 @@ namespace warehouse_interface.Components.Voucher
         {
             general.DisabledEnabled(user_, client, inspect, receipt, payment, status, type, val);
             inspect.Focus();
-            txtInfoScan.Text = "Registrar inpector ,Muestre su codigo de barra frente al lector👍";
+            txtInfoScan.Text = "Registrar inpector, Muestre su codigo de barra frente al lector👍";
         }
 
         public void finish(Label txtInfoScan, TextBox user, TextBox client, TextBox inspect, TextBox receipt, ComboBox payment, ComboBox status, ComboBox type, int val) 
@@ -53,27 +54,21 @@ namespace warehouse_interface.Components.Voucher
             else return 3;
         }
 
-        public void dialog(int n, int id_t,string user, string inspect, DataGridView dGVTasks, string[] ftdate) 
+        public void dialog(int n, int id_t,string user, string inspect, DataGridView dGVTasks, string[] ftdate, TextBox tbUser, TextBox tbInspect) 
         {
             if (n == 0)
             {
-                //DialogResult an = MessageBox.Show("¿Desea iniciar con esta tarea?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                /*DialogResult answer = MessageBox.Show("¿Desea iniciar con esta tarea?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (answer == DialogResult.Yes)
-                {*/
-                    updatedClass.waiting(1 ,default, default,id_t, user, default);
-                    componentTable.ComponentLoadTable(dGVTasks, ftdate);
-                //}
+                updatedClass.waiting(1 , id_t, user, default);
+                componentTable.ComponentLoadTable(dGVTasks, ftdate);
+                tbUser.Text = "";
+                tbInspect.Text = "";
             }
             if(n == 2)
             {
-                //DialogResult an = MessageBox.Show("¿Desea marcar esta tarea como finalizado?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                /*DialogResult answer = MessageBox.Show("¿Desea marcar esta tarea como finalizado?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (answer == DialogResult.Yes)
-                    {*/
-                        updatedClass.waiting(2, default, default, id_t, default, inspect);
-                        componentTable.ComponentLoadTable(dGVTasks, ftdate);
-                    //}
+                updatedClass.waiting(2, id_t, default, inspect);
+                componentTable.ComponentLoadTable(dGVTasks, ftdate);
+                tbUser.Text = "";
+                tbInspect.Text = "";
             }
             if(n == 3)
             {

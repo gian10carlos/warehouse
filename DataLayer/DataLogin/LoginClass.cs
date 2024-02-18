@@ -1,5 +1,7 @@
-﻿using MySql.Data.MySqlClient;
+﻿using DataLayer.Reposit;
+using MySql.Data.MySqlClient;
 using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,14 +11,19 @@ namespace DataLayer.DataLogin
 {
     public class LoginClass
     {
-        MySqlConnection connection = new MySqlConnection("SERVER=localhost; DATABASE=warehouse; UID=root;PASSWORD= ;");
+        private readonly DataBase dataBase = new DataBase();
+
         Boolean answer = false;
 
         public Boolean Login(string username, string password) 
         {
+            MySqlConnection connection = dataBase.dbconnection();
+
             int exist = 0;
 
-            string sqlQuery = "SELECT COUNT(*) FROM profileUser_gc WHERE user = @username AND password = PASSWORD(@password)";
+            string sqlQuery = "SELECT COUNT(*) FROM usuario "
+                + "WHERE usua_nick = @username "
+                + "AND usua_clave = @password AND cod_perfil = 2";
             
             connection.Open();
             

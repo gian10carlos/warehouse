@@ -9,7 +9,6 @@ namespace warehouse_interface.Components.Voucher
 {
     public class General
     {
-        private readonly ComponentTable componentTable = new ComponentTable();
         private Boolean active = false;
         public void Clear(
             TextBox user, TextBox client, 

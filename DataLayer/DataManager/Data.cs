@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using DataLayer.Reposit;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,14 +12,15 @@ namespace DataLayer.DataManager
 {
     public class Data
     {
-        MySqlConnection connection = new MySqlConnection("SERVER=localhost; DATABASE=warehouse; UID=root;PASSWORD= ;");
-
+        private readonly DataBase dataBase = new DataBase();
         public Boolean changeValMin(int num)
         {
+            MySqlConnection connection = dataBase.dbconnection();
+            
             Boolean valResult = false;
             connection.Open();
 
-            string sqlQuery = "UPDATE valMin_gc SET amount = @num ORDER BY id LIMIT 1;";
+            string sqlQuery = "UPDATE valMin_wh SET amount = @num ORDER BY id LIMIT 1;";
 
             using (MySqlCommand cmd = new MySqlCommand(sqlQuery, connection))
             {
@@ -41,10 +43,15 @@ namespace DataLayer.DataManager
 
         public DataSet getScoreQuantity()
         {
+            MySqlConnection connection = dataBase.dbconnection();
+
             connection.Open();
             DataSet dataSet = new DataSet();
 
-            string sqlQuery = "SELECT user AS USUARIO, COUNT(*) AS CANTIDAD, SUM(amount) AS IMPORTE FROM tasks_gc WHERE status = 'FINALIZADO' AND DATE(date_end) = CURRENT_DATE GROUP BY user ORDER BY IMPORTE DESC, CANTIDAD DESC LIMIT 5;";
+            string sqlQuery = "SELECT user AS USUARIO, COUNT(*) AS CANTIDAD, SUM(amount) "
+                + " AS IMPORTE FROM tasks_wh WHERE status = 'FINALIZADO'"
+                + " AND DATE(date_end) = CURRENT_DATE GROUP BY user ORDER BY IMPORTE DESC,"
+                + " CANTIDAD DESC LIMIT 5;";
 
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(sqlQuery, connection))
                 {
