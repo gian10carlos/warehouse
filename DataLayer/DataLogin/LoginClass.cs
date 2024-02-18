@@ -9,14 +9,16 @@ namespace DataLayer.DataLogin
 {
     public class LoginClass
     {
-        MySqlConnection connection = new MySqlConnection("SERVER=localhost; DATABASE=warehouse; UID=root;PASSWORD= ;");
+        MySqlConnection connection = new MySqlConnection("SERVER=localhost; DATABASE=bdaltiplano; UID=root;PASSWORD= ;");
         Boolean answer = false;
 
         public Boolean Login(string username, string password) 
         {
             int exist = 0;
 
-            string sqlQuery = "SELECT COUNT(*) FROM profileUser_gc WHERE user = @username AND password = PASSWORD(@password)";
+            string sqlQuery = "SELECT COUNT(*) FROM usuario "
+                + "WHERE usua_nick = @username "
+                + "AND usua_clave = @password AND cod_perfil = 2";
             
             connection.Open();
             
