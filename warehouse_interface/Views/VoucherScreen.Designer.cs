@@ -53,6 +53,7 @@
             this.mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
             this.dGVTasks = new System.Windows.Forms.DataGridView();
             this.labelInfoScan = new System.Windows.Forms.Label();
+            this.mySqlCommand2 = new MySql.Data.MySqlClient.MySqlCommand();
             this.panelForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGVTasks)).BeginInit();
             this.SuspendLayout();
@@ -80,9 +81,9 @@
             this.panelForm.Controls.Add(this.label1);
             this.panelForm.Controls.Add(this.label2);
             this.panelForm.Controls.Add(this.comboBoxType);
-            this.panelForm.Location = new System.Drawing.Point(3, 29);
+            this.panelForm.Location = new System.Drawing.Point(20, 29);
             this.panelForm.Name = "panelForm";
-            this.panelForm.Size = new System.Drawing.Size(1286, 217);
+            this.panelForm.Size = new System.Drawing.Size(1266, 217);
             this.panelForm.TabIndex = 18;
             // 
             // dateTimeTo
@@ -144,7 +145,7 @@
             this.comboBoxPayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxPayment.FormattingEnabled = true;
-            this.comboBoxPayment.Location = new System.Drawing.Point(1064, 14);
+            this.comboBoxPayment.Location = new System.Drawing.Point(1044, 14);
             this.comboBoxPayment.Name = "comboBoxPayment";
             this.comboBoxPayment.Size = new System.Drawing.Size(149, 33);
             this.comboBoxPayment.TabIndex = 16;
@@ -155,7 +156,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(955, 14);
+            this.label6.Location = new System.Drawing.Point(935, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(71, 28);
             this.label6.TabIndex = 15;
@@ -167,7 +168,7 @@
             this.buttonClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonClear.Location = new System.Drawing.Point(1132, 131);
+            this.buttonClear.Location = new System.Drawing.Point(1112, 131);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Padding = new System.Windows.Forms.Padding(10);
             this.buttonClear.Size = new System.Drawing.Size(119, 55);
@@ -201,7 +202,7 @@
             this.comboBoxStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxStatus.FormattingEnabled = true;
-            this.comboBoxStatus.Location = new System.Drawing.Point(674, 9);
+            this.comboBoxStatus.Location = new System.Drawing.Point(654, 9);
             this.comboBoxStatus.Name = "comboBoxStatus";
             this.comboBoxStatus.Size = new System.Drawing.Size(196, 33);
             this.comboBoxStatus.TabIndex = 10;
@@ -212,7 +213,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(551, 12);
+            this.label4.Location = new System.Drawing.Point(531, 12);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 28);
             this.label4.TabIndex = 9;
@@ -223,7 +224,7 @@
             this.textBoxReceipt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxReceipt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBoxReceipt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxReceipt.Location = new System.Drawing.Point(689, 116);
+            this.textBoxReceipt.Location = new System.Drawing.Point(669, 116);
             this.textBoxReceipt.Name = "textBoxReceipt";
             this.textBoxReceipt.Size = new System.Drawing.Size(313, 30);
             this.textBoxReceipt.TabIndex = 8;
@@ -234,7 +235,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(536, 116);
+            this.label3.Location = new System.Drawing.Point(516, 116);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 28);
             this.label3.TabIndex = 7;
@@ -345,6 +346,13 @@
             this.labelInfoScan.TabIndex = 20;
             this.labelInfoScan.Text = "*";
             // 
+            // mySqlCommand2
+            // 
+            this.mySqlCommand2.CacheAge = 0;
+            this.mySqlCommand2.Connection = null;
+            this.mySqlCommand2.EnableCaching = false;
+            this.mySqlCommand2.Transaction = null;
+            // 
             // VoucherScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -386,5 +394,6 @@
         private System.Windows.Forms.DateTimePicker dateTimeFrom;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DateTimePicker dateTimeTo;
+        private MySql.Data.MySqlClient.MySqlCommand mySqlCommand2;
     }
 }

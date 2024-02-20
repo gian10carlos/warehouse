@@ -9,7 +9,7 @@ namespace DataLayer.DataVoucher
 {
     public class Data
     {
-        MySqlConnection connection = new MySqlConnection("SERVER=localhost; DATABASE=warehouse; UID=root;PASSWORD= ;");
+        MySqlConnection connection = new MySqlConnection("SERVER=localhost; DATABASE=bdaltiplano; UID=root;PASSWORD= ;");
 
         public bool IsDatabaseConnected()
         {
@@ -41,12 +41,10 @@ namespace DataLayer.DataVoucher
                 return error;
             }
 
-            string sqlQuery = "SELECT id_task, user AS USUARIO, inspect AS INSPECCIONADO, "
-                             + "client AS CLIENTE, date_voucher AS FECHA, serie_num AS SERIE_NUM, "
-                             + "type AS TIPO, status AS ESTADO "
-                             + "FROM tasks_gc "
-                             + "WHERE DATE(date_voucher) >= @from_dv_ AND DATE(date_voucher) <= @to_dv_ "
-                             + "ORDER BY CASE WHEN status = 'SIN INICIAR' THEN 0 WHEN status = 'PROCESO' THEN 1 ELSE 2 END";
+            string sqlQuery = "SELECT id_task, user AS USUARIO,  inspect AS INSPECCIONADO,"
+                + "cu.clie_cliente AS CLIENTE, date_voucher AS FECHA, "
+                + " serie_num AS SERIE_NUM, type AS TIPO, status AS ESTADO " 
+                + "FROM tasks_wh JOIN customer AS cu ON  cu.cod_cliente = tasks_wh.client";
 
             using (MySqlDataAdapter adapter = new MySqlDataAdapter(sqlQuery, connection))
             {
@@ -54,6 +52,7 @@ namespace DataLayer.DataVoucher
                 adapter.SelectCommand.Parameters.AddWithValue("@to_dv_", ftdate[1]);
                 adapter.Fill(dataTable);
             }
+            Console.WriteLine(dataTable);
             connection.Close();
             return dataTable;
         }

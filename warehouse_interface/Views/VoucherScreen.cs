@@ -8,7 +8,6 @@ namespace warehouse_interface.Views
 {
     public partial class VoucherScreen : UserControl
     {
-        private DataTable dataTable = new DataTable();
         private ComponentComboBox componentComboBox = new ComponentComboBox();
         private ComponentTable ComponentTable = new ComponentTable();
         private ChangeStatus changeStatus = new ChangeStatus();
@@ -22,6 +21,7 @@ namespace warehouse_interface.Views
         public VoucherScreen()
         {
             InitializeComponent();
+            
             filterActive = false;
 
             componentComboBox.ComboBoxPayment(comboBoxPayment);
@@ -35,6 +35,7 @@ namespace warehouse_interface.Views
 
         private void VoucherScreen_Load(object sender, EventArgs e)
         {
+            dateTimeFrom.Value = DateTime.Now.AddDays(-1);
             bindingSource = loadTable();
 
             if (dGVTasks.Columns.Count > 0 && dGVTasks.Rows.Count > 0)
@@ -76,7 +77,7 @@ namespace warehouse_interface.Views
             ftdate[1] = toDate;
         }
 
-        private BindingSource loadTable()
+       private BindingSource loadTable()
         {
             filterDateFromTo();
             return ComponentTable.ComponentLoadTable(dGVTasks, ftdate);
