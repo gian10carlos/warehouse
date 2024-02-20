@@ -100,6 +100,7 @@
     <Compile Include="DataVoucher\Data.cs" />
     <Compile Include="DataVoucher\Updated\UpdatedClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reposit\DataBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

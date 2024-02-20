@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using DataLayer.Reposit;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,10 +12,13 @@ namespace DataLayer.DataManager
 {
     public class Data
     {
-        MySqlConnection connection = new MySqlConnection("SERVER=localhost; DATABASE=bdaltiplano; UID=root;PASSWORD= ;");
+
+        private readonly DataBase dataBase = new DataBase();
 
         public Boolean changeValMin(int num)
         {
+            MySqlConnection connection = dataBase.dbconnection();
+            
             Boolean valResult = false;
             connection.Open();
 
@@ -41,6 +45,8 @@ namespace DataLayer.DataManager
 
         public DataSet getScoreQuantity()
         {
+            MySqlConnection connection = dataBase.dbconnection();
+
             connection.Open();
             DataSet dataSet = new DataSet();
 

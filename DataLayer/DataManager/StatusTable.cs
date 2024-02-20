@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using DataLayer.Reposit;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,13 @@ namespace DataLayer.DataManager
 {
     public class StatusTable
     {
-        MySqlConnection connection = new MySqlConnection("SERVER=localhost; DATABASE=bdaltiplano; UID=root;PASSWORD= ;");
+
+        private readonly DataBase dataBase = new DataBase();
 
         public void updatedStatusS(object[] valClickRowView)
         {
+            MySqlConnection connection = dataBase.dbconnection();
+
             int newstatus = 0;
 
             if (valClickRowView[2].Equals("ACTIVO"))
@@ -23,8 +27,6 @@ namespace DataLayer.DataManager
             {
                 newstatus = 1;
             }
-
-            Console.WriteLine("" + newstatus);
 
             connection.Open();
             string sqlQuery = "UPDATE seller_status_wh SET status = @newstatus WHERE id = @n_";
@@ -43,6 +45,8 @@ namespace DataLayer.DataManager
 
         public void updatedStatusP(object[] valClickRowView)
         {
+            MySqlConnection connection = dataBase.dbconnection();
+
             int newstatus = 0;
 
             if (valClickRowView[2].Equals("ACTIVO"))

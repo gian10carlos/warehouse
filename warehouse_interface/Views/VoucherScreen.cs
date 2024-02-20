@@ -120,10 +120,15 @@ namespace warehouse_interface.Views
         private void buttonClear_Click(object sender, EventArgs e)
         {
             filterActive = false;
-            general.Clear(textBoxUser, textBoxClient, textBoxInspect, textBoxReceipt, comboBoxPayment ,comboBoxStatus,comboBoxType ,dGVTasks);
+            changeClear();
             bindingSource.RemoveFilter();
             VoucherScreen_Load(sender, e);
             labelInfoScan.Text = "";
+        }
+
+        public void changeClear()
+        {
+            general.Clear(textBoxUser, textBoxClient, textBoxInspect, textBoxReceipt, comboBoxPayment, comboBoxStatus, comboBoxType, dGVTasks);
         }
 
         private void textBoxUser_TextChanged(object sender, EventArgs e)
@@ -136,8 +141,8 @@ namespace warehouse_interface.Views
             {
                 switch (changeStatus.checkUser(textBoxUser.Text, textBoxInspect.Text, valClickRowView[7]))
                 {
-                    case 0: changeStatus.dialog(0, Convert.ToInt32(valClickRowView[0]), textBoxUser.Text, textBoxInspect.Text, dGVTasks, ftdate); break;
-                    case 1: changeStatus.dialog(1, Convert.ToInt32(valClickRowView[0]), textBoxUser.Text, textBoxInspect.Text, dGVTasks, ftdate); break;
+                    case 0: changeStatus.dialog(0, Convert.ToInt32(valClickRowView[0]), textBoxUser.Text, textBoxInspect.Text, dGVTasks, ftdate, textBoxUser, textBoxInspect); break;
+                    case 1: changeStatus.dialog(1, Convert.ToInt32(valClickRowView[0]), textBoxUser.Text, textBoxInspect.Text, dGVTasks, ftdate, textBoxUser, textBoxInspect); break;
                 }
             }
         }
@@ -146,7 +151,7 @@ namespace warehouse_interface.Views
         {
             if (changeStatus.checkUser(textBoxUser.Text, textBoxInspect.Text, valClickRowView[7]) == 1)
             {
-                changeStatus.dialog(2, Convert.ToInt32(valClickRowView[0]), textBoxUser.Text, textBoxInspect.Text, dGVTasks, ftdate);//INSPECT VALIDATED WAITING - PROCESS
+                changeStatus.dialog(2, Convert.ToInt32(valClickRowView[0]), textBoxUser.Text, textBoxInspect.Text, dGVTasks, ftdate, textBoxUser, textBoxInspect);
             }
         }
 

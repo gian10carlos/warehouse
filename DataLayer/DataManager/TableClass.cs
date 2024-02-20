@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using DataLayer.Reposit;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,10 +12,11 @@ namespace DataLayer.DataManager
     public class TableClass
     {
 
-        MySqlConnection connection = new MySqlConnection("SERVER=localhost; DATABASE=bdaltiplano; UID=root;PASSWORD= ;");
+        private readonly DataBase dataBase = new DataBase();
 
         public DataTable getUserCountAmount()
         {
+            MySqlConnection connection = dataBase.dbconnection();
 
             connection.Open();
             DataTable dataTable = new DataTable();
@@ -36,13 +38,12 @@ namespace DataLayer.DataManager
 
         public DataTable getSeller()
         {
+            MySqlConnection connection = dataBase.dbconnection();
+
             connection.Open();
             DataTable dataTable = new DataTable();
 
-            string sqlQuery = "SELECT ss.id AS ID, u.usua_nick AS NOMBRE, "
-                + "CASE WHEN ss.status = 1 THEN 'ACTIVO' ELSE 'NO ACTIVO' end "
-                + "as ESTADO FROM seller_status_wh AS ss JOIN usuario AS u ON "
-                + " u.cod_usuario = ss.cod_usuario;";
+            string sqlQuery = "SELECT ss.id AS ID, u.usua_nick AS NOMBRE_VEND, CASE WHEN ss.status = 1 THEN 'ACTIVO' ELSE 'NO ACTIVO' end as ESTADO FROM seller_status_wh AS ss JOIN usuario AS u ON u.cod_usuario = ss.cod_usuario ORDER BY CASE WHEN ss.status = 1 THEN 0 ELSE 1 END, NOMBRE_VEND;\r\n";
 
             using (MySqlDataAdapter adapter = new MySqlDataAdapter(sqlQuery, connection))
             {
@@ -55,6 +56,9 @@ namespace DataLayer.DataManager
 
         public DataTable getPayment() 
         {
+
+            MySqlConnection connection= dataBase.dbconnection();
+
             connection.Open();
             DataTable dataTable = new DataTable();
 
@@ -69,6 +73,29 @@ namespace DataLayer.DataManager
             connection.Close () ;
 
             return dataTable;
+        }
+
+        public int getValMin()
+        {
+            int result = 0;
+
+            MySqlConnection connection = dataBase.dbconnection ();
+
+            connection.Open();
+
+            string sqlQuery = "SELECT amount FROM valMin_wh WHERE id = 1";
+
+            using (MySqlCommand cmd = new MySqlCommand(sqlQuery, connection))
+            {
+                object resultObj = cmd.ExecuteScalar();
+
+                if(resultObj != null)
+                {
+                    int.TryParse(resultObj.ToString(), out result);
+                }
+            }
+
+            return result;
         }
     }
 }
