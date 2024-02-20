@@ -62,7 +62,7 @@ namespace DataLayer.DataManager
 
             string sqlQuery = "SELECT id AS ID, description AS CAJA, CASE WHEN status = 1 THEN "
                 + "'ACTIVO' WHEN status = 0 THEN 'NO ACTIVO' ELSE 'NO ACTIVO' END "
-                + " AS ESTADO FROM payment_status_wh;";
+                + " AS ESTADO FROM payment_status_wh ORDER BY description ASC;";
 
             using (MySqlDataAdapter adapter = new MySqlDataAdapter(sqlQuery, connection))
             {
