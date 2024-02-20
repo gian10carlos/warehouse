@@ -10,6 +10,7 @@ namespace DataLayer.DataManager
 {
     public class StatusTable
     {
+
         private readonly DataBase dataBase = new DataBase();
 
         public void updatedStatusS(object[] valClickRowView)

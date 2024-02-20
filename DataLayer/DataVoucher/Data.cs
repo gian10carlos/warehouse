@@ -44,13 +44,13 @@ namespace DataLayer.DataVoucher
                               + "WHERE DATE(date_voucher) >= @from_dv_ AND DATE(date_voucher) <= @to_dv_ "
                               + "ORDER BY CASE WHEN status = 'SIN INICIAR' THEN 0 WHEN status = 'PROCESO' THEN 1 ELSE 2 END";
 
-
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(sqlQuery, connection))
                 {
                     adapter.SelectCommand.Parameters.AddWithValue("@from_dv_", ftdate[0]);
                     adapter.SelectCommand.Parameters.AddWithValue("@to_dv_", ftdate[1]);
                     adapter.Fill(dataTable);
                 }
+
             connection.Close();
             return dataTable;
         }

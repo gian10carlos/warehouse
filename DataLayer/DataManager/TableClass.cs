@@ -11,7 +11,9 @@ namespace DataLayer.DataManager
 {
     public class TableClass
     {
+
         private readonly DataBase dataBase = new DataBase();
+
         public DataTable getUserCountAmount()
         {
             MySqlConnection connection = dataBase.dbconnection();

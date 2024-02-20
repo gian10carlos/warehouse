@@ -12,7 +12,9 @@ namespace DataLayer.DataManager
 {
     public class Data
     {
+
         private readonly DataBase dataBase = new DataBase();
+
         public Boolean changeValMin(int num)
         {
             MySqlConnection connection = dataBase.dbconnection();
