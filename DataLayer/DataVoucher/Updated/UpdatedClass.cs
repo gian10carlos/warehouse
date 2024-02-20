@@ -15,7 +15,7 @@ namespace DataLayer.DataVoucher.Updated
 
         public DataTable waiting(int option, int id, string user, string inspect)
         {
-            MySqlConnection connection = dataBase.dbconnection();
+            MySqlConnection connection = dataBase.dbconnection(); 
 
             DataTable dataTable = new DataTable();
 
